@@ -21,7 +21,7 @@ struct OnboardingView: View {
                 .tag(2)
             
             Button("Done") {
-                
+                doneRequested()
             }
         }
         .tabViewStyle(PageTabViewStyle())

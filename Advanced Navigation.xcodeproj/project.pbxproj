@@ -25,6 +25,7 @@
 		8944D7562981F6AF00FD14E7 /* FirstDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944D7552981F6AF00FD14E7 /* FirstDetailView.swift */; };
 		8944D75B2981F6E600FD14E7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944D7592981F6E600FD14E7 /* SecondViewController.swift */; };
 		8944D75C2981F6E600FD14E7 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8944D75A2981F6E600FD14E7 /* SecondViewController.xib */; };
+		8944D76029820A4800FD14E7 /* FirstTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944D75F29820A4800FD14E7 /* FirstTabViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		8944D7552981F6AF00FD14E7 /* FirstDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDetailView.swift; sourceTree = "<group>"; };
 		8944D7592981F6E600FD14E7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		8944D75A2981F6E600FD14E7 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
+		8944D75F29820A4800FD14E7 /* FirstTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				8944D74F2981F56100FD14E7 /* FirstTabCoordinator.swift */,
 				8944D7532981F68200FD14E7 /* FirstViewController.swift */,
+				8944D75F29820A4800FD14E7 /* FirstTabViewModel.swift */,
 				8944D7552981F6AF00FD14E7 /* FirstDetailView.swift */,
 			);
 			path = First;
@@ -235,6 +238,7 @@
 				8944D7502981F56100FD14E7 /* FirstTabCoordinator.swift in Sources */,
 				8944D7452981F0C600FD14E7 /* OnboardingView.swift in Sources */,
 				8944D7282981EC6C00FD14E7 /* SceneDelegate.swift in Sources */,
+				8944D76029820A4800FD14E7 /* FirstTabViewModel.swift in Sources */,
 				8944D7562981F6AF00FD14E7 /* FirstDetailView.swift in Sources */,
 				8944D73F2981EEC800FD14E7 /* ApplicationCoordinator.swift in Sources */,
 			);

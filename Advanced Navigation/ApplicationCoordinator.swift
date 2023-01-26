@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import Combine
 
 class ApplicationCoordinator: Coordinator {
     
@@ -14,21 +15,51 @@ class ApplicationCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     
+    let hasSeenOnboarding = CurrentValueSubject<Bool, Never>(false)
+    var subscriptions = Set<AnyCancellable>()
+    
     init(_ window: UIWindow) {
         self.window = window
     }
     
     func start() {
-//        let onboardingCoordinator = OnboardingCoordinator()
-//        onboardingCoordinator.start()
-//        self.childCoordinators = [onboardingCoordinator]
-//        window.rootViewController = onboardingCoordinator.rootViewController
         
-        let mainCoordinator = MainCoordinator()
-        mainCoordinator.start()
-        self.childCoordinators = [mainCoordinator]
-        window.rootViewController = mainCoordinator.rootViewController
+        setupOnboardingValue()
+        
+        hasSeenOnboarding
+            .removeDuplicates()
+            .sink { [weak self] hasSeen in
+            if hasSeen {
+                let mainCoordinator = MainCoordinator()
+                mainCoordinator.start()
+                self?.childCoordinators = [mainCoordinator]
+                self?.window.rootViewController = mainCoordinator.rootViewController
+            } else if let hasSeen = self?.hasSeenOnboarding {
+                let onboardingCoordinator = OnboardingCoordinator(hasSeenOnboarding: hasSeen)
+                onboardingCoordinator.start()
+                self?.childCoordinators = [onboardingCoordinator]
+                self?.window.rootViewController = onboardingCoordinator.rootViewController
+                        
+            }
+            
+        }.store(in: &subscriptions)
+
     }
     
-    
+    func setupOnboardingValue() {
+            
+        // storing and loading of state/data
+        
+        let key = "hasSeenOnboarding"
+        let value = UserDefaults.standard.bool(forKey: key) //default of false
+        hasSeenOnboarding.send(value)
+        
+        hasSeenOnboarding
+            .filter({ $0 })
+            .sink { (value) in
+                UserDefaults.standard.setValue(value, forKey: key)
+            }
+            .store(in: &subscriptions)
+        
+    }
 }

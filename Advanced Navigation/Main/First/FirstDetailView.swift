@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct FirstDetailView: View {
+    
+    @ObservedObject var viewModel: FirstTabViewModel
+    
     var body: some View {
-        Text("First Detail VC")
+        VStack {
+            Text("First Detail VC")
+            
+            TextField("name", text: $viewModel.name)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            TextField("email", text: $viewModel.email)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+        }.padding()
     }
 }
 
 struct FirstDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstDetailView()
+        FirstDetailView(viewModel: FirstTabViewModel())
     }
 }
